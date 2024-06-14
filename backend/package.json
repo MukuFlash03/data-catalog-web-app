@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend server for data catalog full-stack web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MukuFlash03/data-catalog-web-app.git"
+  },
+  "author": "Mukul C. Mahadik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MukuFlash03/data-catalog-web-app/issues"
+  },
+  "homepage": "https://github.com/MukuFlash03/data-catalog-web-app#readme"
+}
