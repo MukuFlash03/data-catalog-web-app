@@ -1,0 +1,122 @@
+[
+    {
+      "id": 1,
+      "data category": "Firmographic",
+      "Record count": 5250,
+      "fields": "Company name, Company address, Website"
+    },
+    {
+      "id": 2,
+      "data category": "Demographic",
+      "Record count": 8500,
+      "fields": "Name, Age, Gender, Location"
+    },
+    {
+      "id": 3,
+      "data category": "Behavioral",
+      "Record count": 3200,
+      "fields": "Purchase history, Website interactions, Email engagement"
+    },
+    {
+      "id": 4,
+      "data category": "Technographic",
+      "Record count": 2800,
+      "fields": "Technology stack, Software usage, Hardware"
+    },
+    {
+      "id": 5,
+      "data category": "Psychographic",
+      "Record count": 4100,
+      "fields": "Interests, Personality traits, Values"
+    },
+    {
+      "id": 6,
+      "data category": "Firmographic",
+      "Record count": 6700,
+      "fields": "Industry, Company size, Revenue"
+    },
+    {
+      "id": 7,
+      "data category": "Demographic",
+      "Record count": 9200,
+      "fields": "Income, Education level, Marital status"
+    },
+    {
+      "id": 8,
+      "data category": "Behavioral",
+      "Record count": 4900,
+      "fields": "Social media activity, Mobile app usage, Customer service interactions"
+    },
+    {
+      "id": 9,
+      "data category": "Technographic",
+      "Record count": 3600,
+      "fields": "Cloud services, Cybersecurity measures, IT infrastructure"
+    },
+    {
+      "id": 10,
+      "data category": "Psychographic",
+      "Record count": 5100,
+      "fields": "Lifestyle, Hobbies, Political affiliation"
+    },
+    {
+      "id": 11,
+      "data category": "Firmographic", 
+      "Record count": 7800,
+      "fields": "Year founded, Number of employees, Headquarters location"
+    },
+    {
+      "id": 12,
+      "data category": "Demographic",
+      "Record count": 10500,
+      "fields": "Ethnicity, Language, Occupation"
+    },
+    {
+      "id": 13,
+      "data category": "Behavioral",
+      "Record count": 6200,
+      "fields": "Loyalty program membership, Customer lifetime value, Churn risk"
+    },
+    {
+      "id": 14, 
+      "data category": "Technographic",
+      "Record count": 4400,
+      "fields": "Operating systems, Browser preferences, Mobile device usage"
+    },
+    {
+      "id": 15,
+      "data category": "Psychographic", 
+      "Record count": 5900,
+      "fields": "Social class, Environmental consciousness, Brand affinity"
+    },
+    {
+      "id": 16,
+      "data category": "Firmographic",
+      "Record count": 8100,
+      "fields": "Legal structure, Subsidiaries, Competitors"
+    },
+    {
+      "id": 17,
+      "data category": "Demographic", 
+      "Record count": 11000,
+      "fields": "Family size, Home ownership, Vehicle ownership"
+    },
+    {
+      "id": 18,
+      "data category": "Behavioral",
+      "Record count": 7100,
+      "fields": "Channel preferences, Response rates, Conversion rates"
+    },
+    {
+      "id": 19,
+      "data category": "Technographic",
+      "Record count": 5200,
+      "fields": "Network infrastructure, Data storage, Backup solutions" 
+    },
+    {
+      "id": 20,
+      "data category": "Psychographic",
+      "Record count": 6500,
+      "fields": "Motivations, Pain points, Decision-making process"
+    }
+]
