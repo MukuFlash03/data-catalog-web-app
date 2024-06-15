@@ -1,6 +1,8 @@
 import { UUID } from "crypto";
 
 export type Product = {
+    [key: string]: any;
+    [index: number]: any;
     _id: UUID
     id: number;
     product_name: string;
