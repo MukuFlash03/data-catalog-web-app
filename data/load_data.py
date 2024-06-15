@@ -41,10 +41,10 @@ cur = conn.cursor()
 for entry in data_entries:
     cur.execute(
         """
-        INSERT INTO data_entries (id, data_category, record_count, fields)
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO data_entries (id, product_name, data_category, record_count, fields)
+        VALUES (%s, %s, %s, %s, %s)
         """,
-        (entry['id'], entry['data category'], entry['Record count'], entry['fields'])
+        (entry['id'], entry['product name'], entry['data category'], entry['Record count'], entry['fields'])
     )
 
 # Commit the transaction and close the connection
