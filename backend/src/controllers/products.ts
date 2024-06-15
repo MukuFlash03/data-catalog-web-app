@@ -1,16 +1,34 @@
-import pool from "../db_setup";
+import pool from "../db/db_setup";
 import { Request, Response, Router } from 'express';
 import { Product } from "../models/products";
+import {
+    fetchProducts,
+    fetchFilteredProducts,
+    fetchProductById,
+    insertProduct,
+    modifyProduct,
+    removeProduct,
+} from "../db/db_queries";
 
 const router = Router();
 
 // Get all Products
 export const getProducts = router.get("/products", async (request: Request, response: Response) => {
     try {
-        const results = await pool.query('SELECT * FROM data_entries');
-        response
-            .status(200)
-            .json(results.rows);
+        if (request.query.query === undefined || typeof request.query.query === 'string') {
+            const searchQuery = request.query.query ?? '';
+            let products;
+            if (searchQuery) {
+                // If a search query is provided, fetch filtered products
+                products = await fetchFilteredProducts(searchQuery);
+            } else {
+                // If no search query is provided, fetch all products
+                products = await fetchProducts();
+            }
+            response
+                .status(200)
+                .json(products);
+        }
     } catch (error) {
         console.error("Error getting products:", error);
         response
@@ -24,16 +42,10 @@ export const getProducts = router.get("/products", async (request: Request, resp
 export const getProductById = router.get("/products/:_id", async (request: Request, response: Response) => {
     const _id = request.params._id;
     try {
-        const results = await pool.query(`
-            SELECT * 
-            FROM data_entries 
-            WHERE _id = $1
-            `,
-            [_id]
-        );
+        const products = await fetchProductById(_id);
         response
             .status(200)
-            .json(results.rows);
+            .json(products);
     } catch (error) {
         console.error("Error getting product:", error);
         response
@@ -44,17 +56,15 @@ export const getProductById = router.get("/products/:_id", async (request: Reque
 
 // Create a Product
 export const createProduct = router.post("/products", async (request: Request, response: Response) => {
-    const { id, product_name, data_category, record_count, fields } = request.body;
-
+    const productFields = {
+        id: request.body.id,
+        product_name: request.body.product_name,
+        data_category: request.body.data_category,
+        record_count: request.body.record_count,
+        fields: request.body.fields,
+    }
     try {
-        const results = await pool.query(`
-            INSERT INTO data_entries (id, product_name, data_category, record_count, fields) 
-            VALUES ($1, $2, $3, $4, $5)
-            RETURNING *
-            `,
-            [id, product_name, data_category, record_count, fields]
-        );
-
+        const results = await insertProduct(productFields);
         response
             .status(201)
             .send(`User added with ID: ${results.rows[0]._id}`)
@@ -68,19 +78,16 @@ export const createProduct = router.post("/products", async (request: Request, r
 
 // Update a Product
 export const updateProduct = router.put("/products/:_id", async (request: Request, response: Response) => {
-    const { id, product_name, data_category, record_count, fields } = request.body;
-    const parsedRecordCount = parseInt(record_count);
+    const productFields = {
+        id: request.body.id,
+        product_name: request.body.product_name,
+        data_category: request.body.data_category,
+        record_count: request.body.record_count,
+        fields: request.body.fields,
+    }
     const _id = request.params._id;
-
     try {
-        const results = await pool.query(`
-            UPDATE data_entries 
-            SET id = $1, product_name = $2, data_category = $3, record_count = $4, fields = $5 
-            WHERE _id = $6
-            `,
-            [id, product_name, data_category, record_count, fields, _id]
-        );
-
+        const results = await modifyProduct(productFields, _id);
         response
             .status(201)
             .send(`User modified with ID: ${_id}`)
@@ -95,15 +102,8 @@ export const updateProduct = router.put("/products/:_id", async (request: Reques
 // Delete a Product
 export const deleteProduct = router.delete("/products/:_id", async (request: Request, response: Response) => {
     const _id = request.params._id;
-
     try {
-        const results = await pool.query(`
-            DELETE FROM data_entries 
-            WHERE _id = $1
-            `,
-            [_id]
-        );
-
+        const results = await removeProduct(_id);
         response
             .status(201)
             .send(`User deleted with ID: ${_id}`)
