@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 import Logo from "./logo";
+import { Logout, ViewProducts } from "./products/buttons";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -15,8 +16,8 @@ const Navbar = () => {
       href: "/products",
     },
     {
-      name: "Sign Out",
-      href: "/"
+      name: "Log Out",
+      href: "/logout"
     }
   ];
 
@@ -29,6 +30,21 @@ const Navbar = () => {
       </div>
 
       <ul className="hidden md:flex">
+        <li
+          key={"Products"}
+          className="nav-links px-4 cursor-pointer capitalize font-medium text-white-500 hover:scale-105 hover:text-white duration-200 link-underline"
+        >
+          <ViewProducts text="View Products" />
+        </li>
+        <li
+          key={"Log Out"}
+          className="nav-links px-4 cursor-pointer capitalize font-medium text-white-500 hover:scale-105 hover:text-white duration-200 link-underline"
+        >
+          <Logout />
+        </li>
+      </ul>
+
+      {/* <ul className="hidden md:flex">
         {links.map((link) => (
           <li
             key={link.name}
@@ -37,7 +53,7 @@ const Navbar = () => {
             <Link href={link.href}>{link.name}</Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
 
       <div
         onClick={() => setNav(!nav)}

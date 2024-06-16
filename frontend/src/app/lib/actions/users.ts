@@ -44,7 +44,7 @@ export async function authenticateUser(
         }
         else {
             console.log(responseData.message);
-            return response;
+            return { response, responseData };
         }
     } catch (error) {
         console.error('Error authenticating user:', error);

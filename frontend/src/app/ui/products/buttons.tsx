@@ -4,6 +4,34 @@ import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { removeProduct } from '@/app/lib/actions/products';
 import { FormEvent, useState } from 'react';
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
+export function Logout() {
+    return (
+        <Link
+            href="/logout"
+            className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        >
+            <span className="hidden md:block">Log Out</span>{' '}
+            <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+        </Link>
+    );
+}
+
+export function ViewProducts({
+    text
+}: {
+    text: string,
+}) {
+    return (
+        <Link
+            href="/products"
+            className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        >
+            <span className="hidden md:block">{text}</span>{' '}
+        </Link>
+    );
+}
 
 export function CreateProduct() {
     return (

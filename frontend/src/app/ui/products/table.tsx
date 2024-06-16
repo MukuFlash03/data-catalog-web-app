@@ -1,19 +1,36 @@
-import { useState } from 'react';
+'use client';
+
+import { useState, useEffect } from 'react';
 import { unstable_noStore as noStore } from 'next/cache';
 import { Product } from '@/app/lib/definitions/products';
 import { UpdateProduct, DeleteProduct } from '@/app/ui/products/buttons';
 import { handleProductSearch } from '@/app/lib/actions/products';
 
-export default async function ProductsTable({
+export default function ProductsTable({
   query,
 }: {
   query: string;
 }) {
   noStore();
 
-  // console.log("Table:", query);
-  const products = await handleProductSearch(query);
-  // console.log(products);
+  // // console.log("Table:", query);
+  // const products = await handleProductSearch(query);
+  // // console.log(products);
+
+  const [products, setProducts] = useState<Product[] | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const fetchedProducts = await handleProductSearch(query);
+      setProducts(fetchedProducts);
+    };
+
+    fetchProducts();
+  }, [query]);
+
+  if (products === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="mt-6 flow-root">
