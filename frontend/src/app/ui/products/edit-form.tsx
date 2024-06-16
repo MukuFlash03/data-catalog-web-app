@@ -37,11 +37,11 @@ export default function Form({
         };
         // const updatedProduct = await updateProduct(productData, product._id);
         await updateProduct(productData, product._id);
-        window.location.href = '/dashboard/products';
+        window.location.href = '/products';
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-3">
             <div className="rounded-md bg-gray-50 p-4 md:p-6">
                 <div className="mb-4">
                     <label htmlFor="customer" className="mb-2 block text-sm font-medium">
@@ -131,7 +131,7 @@ export default function Form({
             </div>
             <div className="mt-6 flex justify-end gap-4">
                 <Link
-                    href="/dashboard/products"
+                    href="/products"
                     className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
                 >
                     Cancel
