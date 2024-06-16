@@ -1,4 +1,4 @@
-import { Product } from '@/app/lib/definitions';
+import { Product } from '@/app/lib/definitions/products';
 
 export async function handleProductSearch(query: string) {
     try {

@@ -2,7 +2,7 @@
 
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { removeProduct } from '@/app/lib/action';
+import { removeProduct } from '@/app/lib/actions/products';
 import { FormEvent, useState } from 'react';
 
 export function CreateProduct() {

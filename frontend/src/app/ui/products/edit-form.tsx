@@ -8,9 +8,9 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { Product } from '@/app/lib/definitions';
+import { Product } from '@/app/lib/definitions/products';
 import { FormEvent, ChangeEvent, useState } from 'react';
-import { updateProduct } from '@/app/lib/action';
+import { updateProduct } from '@/app/lib/actions/products';
 
 export default function Form({
     product,

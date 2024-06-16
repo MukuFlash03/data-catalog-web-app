@@ -1,5 +1,5 @@
 import { UUID } from "crypto";
-import pool from "../db/db_setup";
+import pool from "./db_setup";
 import { Product } from "../models/products";
 
 export async function fetchProducts() {
@@ -42,7 +42,9 @@ export async function fetchFilteredProducts(
     }
 }
 
-export async function fetchProductById(_id: string) {
+export async function fetchProductById(
+    _id: string,
+) {
     console.log('Fetching product by ID...');
     try {
         const data = await pool.query(`
@@ -59,7 +61,9 @@ export async function fetchProductById(_id: string) {
     }
 }
 
-export async function insertProduct(productFields: Partial<Product>) {
+export async function insertProduct(
+    productFields: Partial<Product>
+) {
     console.log('Inserting new product...');
     const { id, product_name, data_category, record_count, fields } = productFields;
     try {
@@ -70,14 +74,17 @@ export async function insertProduct(productFields: Partial<Product>) {
             `,
             [id, product_name, data_category, record_count, fields]
         );
-        return data;
+        return data.rows.length > 0 ? data.rows[0] : null;
     } catch (error) {
         console.error('Database Error:', error);
         throw new Error('Failed to fetch product data.');
     }
 }
 
-export async function modifyProduct(productFields: Partial<Product>, _id: string) {
+export async function modifyProduct(
+    productFields: Partial<Product>,
+    _id: string,
+) {
     console.log('Updating product...');
     const { id, product_name, data_category, record_count, fields } = productFields;
     try {
@@ -88,14 +95,16 @@ export async function modifyProduct(productFields: Partial<Product>, _id: string
             `,
             [id, product_name, data_category, record_count, fields, _id]
         );
-        return data;
+        return data.rows.length > 0 ? data.rows[0] : null;
     } catch (error) {
         console.error('Database Error:', error);
         throw new Error('Failed to fetch product data.');
     }
 }
 
-export async function removeProduct(_id: string) {
+export async function removeProduct(
+    _id: string
+) {
     console.log('Deleting product...');
     try {
         const data = await pool.query(`
@@ -104,7 +113,7 @@ export async function removeProduct(_id: string) {
             `,
             [_id]
         );
-        return data;
+        return data.rows.length > 0 ? data.rows[0] : null;
     } catch (error) {
         console.error('Database Error:', error);
         throw new Error('Failed to fetch product data.');

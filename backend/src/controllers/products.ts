@@ -8,12 +8,12 @@ import {
     insertProduct,
     modifyProduct,
     removeProduct,
-} from "../db/db_queries";
+} from "../db/products";
 
 const router = Router();
 
 // Get all Products
-export const getProducts = router.get("/products", async (request: Request, response: Response) => {
+export const getProducts = router.get("/", async (request: Request, response: Response) => {
     try {
         if (request.query.query === undefined || typeof request.query.query === 'string') {
             const searchQuery = request.query.query ?? '';
@@ -39,7 +39,7 @@ export const getProducts = router.get("/products", async (request: Request, resp
 
 
 // Get Product by ID
-export const getProductById = router.get("/products/:_id", async (request: Request, response: Response) => {
+export const getProductById = router.get("/:_id", async (request: Request, response: Response) => {
     const _id = request.params._id;
     try {
         const products = await fetchProductById(_id);
@@ -55,7 +55,7 @@ export const getProductById = router.get("/products/:_id", async (request: Reque
 });
 
 // Create a Product
-export const createProduct = router.post("/products", async (request: Request, response: Response) => {
+export const createProduct = router.post("/", async (request: Request, response: Response) => {
     const productFields = {
         id: request.body.id,
         product_name: request.body.product_name,
@@ -64,12 +64,12 @@ export const createProduct = router.post("/products", async (request: Request, r
         fields: request.body.fields,
     }
     try {
-        const results = await insertProduct(productFields);
+        const product = await insertProduct(productFields);
         response
             .status(201)
-            .send(`User added with ID: ${results.rows[0]._id}`)
+            .json({ message: "Product added successfully", product });
     } catch (error) {
-        console.error("Error getting product:", error);
+        console.error("Error creating product:", error);
         response
             .status(500)
             .json({ message: `Internal Server Error: ${error}` });
@@ -77,7 +77,7 @@ export const createProduct = router.post("/products", async (request: Request, r
 });
 
 // Update a Product
-export const updateProduct = router.put("/products/:_id", async (request: Request, response: Response) => {
+export const updateProduct = router.put("/:_id", async (request: Request, response: Response) => {
     const productFields = {
         id: request.body.id,
         product_name: request.body.product_name,
@@ -87,12 +87,12 @@ export const updateProduct = router.put("/products/:_id", async (request: Reques
     }
     const _id = request.params._id;
     try {
-        const results = await modifyProduct(productFields, _id);
+        const product = await modifyProduct(productFields, _id);
         response
             .status(201)
-            .send(`User modified with ID: ${_id}`)
+            .json({ message: "Product updated successfully", product });
     } catch (error) {
-        console.error("Error getting product:", error);
+        console.error("Error updating product:", error);
         response
             .status(500)
             .json({ message: `Internal Server Error: ${error}` });
@@ -100,15 +100,15 @@ export const updateProduct = router.put("/products/:_id", async (request: Reques
 });
 
 // Delete a Product
-export const deleteProduct = router.delete("/products/:_id", async (request: Request, response: Response) => {
+export const deleteProduct = router.delete("/:_id", async (request: Request, response: Response) => {
     const _id = request.params._id;
     try {
-        const results = await removeProduct(_id);
+        const product = await removeProduct(_id);
         response
             .status(201)
-            .send(`User deleted with ID: ${_id}`)
+            .json({ message: "Product deleted successfully", product });
     } catch (error) {
-        console.error("Error getting product:", error);
+        console.error("Error deleting product:", error);
         response
             .status(500)
             .json({ message: `Internal Server Error: ${error}` });

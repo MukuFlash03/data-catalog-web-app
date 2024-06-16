@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { FormEvent, ChangeEvent, useState } from 'react';
-import { createProduct } from '@/app/lib/action';
+import { createProduct } from '@/app/lib/actions/products';
 
 export default function Form() {
     const [fields, setFields] = useState<string[]>([]);

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { unstable_noStore as noStore } from 'next/cache';
-import { Product } from '@/app/lib/definitions';
+import { Product } from '@/app/lib/definitions/products';
 import { UpdateProduct, DeleteProduct } from '@/app/ui/products/buttons';
-import { handleProductSearch } from '@/app/lib/action';
+import { handleProductSearch } from '@/app/lib/actions/products';
 
 export default async function ProductsTable({
   query,
