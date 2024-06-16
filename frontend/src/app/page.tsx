@@ -12,7 +12,7 @@ export default function Page() {
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
           <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
-            <strong>Welcome to iCustomer.</strong>
+            <strong>Welcome to Data Catalog</strong>
           </p>
           <div className="flex space-x-4">
             <Link
@@ -35,7 +35,7 @@ export default function Page() {
             width={1000}
             height={760}
             className="block md:block"
-            alt="iCustomer Data Catalog"
+            alt="Data Catalog"
           />
         </div>
       </div>

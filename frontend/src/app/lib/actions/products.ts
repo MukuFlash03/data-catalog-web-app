@@ -1,10 +1,10 @@
 import { Product } from '@/app/lib/definitions/products';
 
-export async function handleProductSearch(query: string) {
+export async function handleProductSearch(
+    query: string,
+) {
     try {
         const url = query ? `http://localhost:8080/api/products?query=${query}` : 'http://localhost:8080/api/products';
-        // console.log("Table:", url);
-
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -22,7 +22,9 @@ export async function handleProductSearch(query: string) {
     }
 }
 
-export async function getProductById(_id: string) {
+export async function getProductById(
+    _id: string,
+) {
     try {
         const url = `http://localhost:8080/api/products/${_id}`;
         const response = await fetch(url, {
@@ -42,7 +44,9 @@ export async function getProductById(_id: string) {
     }
 }
 
-export async function createProduct(productData: Partial<Product>) {
+export async function createProduct(
+    productData: Partial<Product>,
+) {
     try {
         const url = 'http://localhost:8080/api/products';
 
@@ -53,19 +57,24 @@ export async function createProduct(productData: Partial<Product>) {
             },
             body: JSON.stringify(productData),
         });
-
+        const responseData = await response.json();
         if (!response.ok) {
-            throw new Error('Failed to create product');
+            throw new Error(responseData.message);
         }
-
-        // const createdProduct: Product = await response.json();
-        await response.json();
+        else {
+            console.log(responseData.message);
+            return response;
+        }
     } catch (error) {
         console.error('Error creating product:', error);
+        throw error;
     }
 }
 
-export async function updateProduct(productData: Partial<Product>, _id: string) {
+export async function updateProduct(
+    productData: Partial<Product>,
+    _id: string,
+) {
     try {
         const url = `http://localhost:8080/api/products/${_id}`;
         const response = await fetch(url, {
@@ -75,15 +84,17 @@ export async function updateProduct(productData: Partial<Product>, _id: string) 
             },
             body: JSON.stringify(productData),
         });
-
+        const responseData = await response.json();
         if (!response.ok) {
-            throw new Error('Failed to update product');
+            throw new Error(responseData.message);
         }
-
-        // const updatedProduct: Product = await response.json();
-        await response.json();
+        else {
+            console.log(responseData.message);
+            return response;
+        }
     } catch (error) {
         console.error('Error updating product:', error);
+        throw error;
     }
 }
 
@@ -96,13 +107,16 @@ export async function removeProduct(_id: string) {
                 'Content-Type': 'application/json',
             },
         });
-
+        const responseData = await response.json();
         if (!response.ok) {
-            throw new Error('Failed to delete product');
+            throw new Error(responseData.message);
         }
-
-        await response.json();
+        else {
+            console.log(responseData.message);
+            return response;
+        }
     } catch (error) {
         console.error('Error updating product:', error);
+        throw error;
     }
 }

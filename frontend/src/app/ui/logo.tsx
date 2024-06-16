@@ -9,9 +9,9 @@ export default function Logo() {
         src="/logo.png"
         width={150}
         height={100}
-        alt="iCustomer Logo"
+        alt="Data Catalog Logo"
       />
-      {/* <p className="text-[44px]">iCustomer</p> */}
+      {/* <p className="text-[44px]">Data Catalog</p> */}
     </div>
   );
 }

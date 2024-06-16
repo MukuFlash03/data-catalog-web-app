@@ -27,7 +27,8 @@ export async function createUser(
 }
 
 export async function authenticateUser(
-    userCredentials: Partial<User>) {
+    userCredentials: Partial<User>
+) {
     try {
         const url = 'http://localhost:8080/api/auth/login';
         const response = await fetch(url, {
