@@ -1,4 +1,7 @@
 "use strict";
+/*
+Routes for managing products including getting all products, getting a product by ID, creating a new product, updating a product, and deleting a product.
+*/
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -12,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProduct = exports.updateProduct = exports.createProduct = exports.getProductById = exports.getProducts = void 0;
 const express_1 = require("express");
 const products_1 = require("../db/products");
+// Define a new router instance
 const router = (0, express_1.Router)();
 // Get all Products
 exports.getProducts = router.get("/", (request, response) => __awaiter(void 0, void 0, void 0, function* () {

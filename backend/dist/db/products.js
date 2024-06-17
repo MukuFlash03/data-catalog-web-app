@@ -1,4 +1,5 @@
 "use strict";
+// This file contains functions to fetch products data from the database.
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -13,7 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeProduct = exports.modifyProduct = exports.insertProduct = exports.fetchProductById = exports.fetchFilteredProducts = exports.fetchProducts = void 0;
+// Import necessary libraries
 const db_setup_1 = __importDefault(require("./db_setup"));
+// Function to fetch all products from the database
 function fetchProducts() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Fetching products data...');
@@ -31,6 +34,7 @@ function fetchProducts() {
     });
 }
 exports.fetchProducts = fetchProducts;
+// Function to fetch filtered products based on a query
 function fetchFilteredProducts(query) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Fetching filtered products data...');
@@ -55,6 +59,7 @@ function fetchFilteredProducts(query) {
     });
 }
 exports.fetchFilteredProducts = fetchFilteredProducts;
+// Function to fetch a product by its ID
 function fetchProductById(_id) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Fetching product by ID...');
@@ -73,6 +78,7 @@ function fetchProductById(_id) {
     });
 }
 exports.fetchProductById = fetchProductById;
+// Function to insert a new product into the database
 function insertProduct(productFields) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Inserting new product...');
@@ -92,6 +98,7 @@ function insertProduct(productFields) {
     });
 }
 exports.insertProduct = insertProduct;
+// Function to update an existing product in the database
 function modifyProduct(productFields, _id) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Updating product...');
@@ -111,6 +118,7 @@ function modifyProduct(productFields, _id) {
     });
 }
 exports.modifyProduct = modifyProduct;
+// Function to delete a product from the database
 function removeProduct(_id) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Deleting product...');

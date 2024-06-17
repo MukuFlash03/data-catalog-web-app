@@ -1,4 +1,7 @@
 "use strict";
+/*
+File contains database functions related to users including fetching users, finding users by credentials, and checking user existence.
+*/
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -13,7 +16,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertUser = exports.isUserExists = exports.findUserByCredentials = exports.fetchUsers = void 0;
+// Import necessary libraries
 const db_setup_1 = __importDefault(require("./db_setup"));
+// Function to fetch all users from the database
 function fetchUsers() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Fetching users data...');
@@ -31,6 +36,7 @@ function fetchUsers() {
     });
 }
 exports.fetchUsers = fetchUsers;
+// Function to find a user by their credentials
 function findUserByCredentials(_a) {
     return __awaiter(this, arguments, void 0, function* ({ email, }) {
         console.log('Fetching user by email');
@@ -49,6 +55,7 @@ function findUserByCredentials(_a) {
     });
 }
 exports.findUserByCredentials = findUserByCredentials;
+// Function to check if a user already exists
 function isUserExists(email) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -66,6 +73,7 @@ function isUserExists(email) {
     });
 }
 exports.isUserExists = isUserExists;
+// Function to insert a new user into the database
 function insertUser(userFields) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Inserting new user...');
