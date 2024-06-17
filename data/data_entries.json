@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "product name": "Firm Graphics",
+    "data category": "Firmographic",
+    "Record count": 5250,
+    "fields": ["Company name","Company address","Website"]
+  },
+  {
+    "id": 2,
+    "product name": "BizProspects",
+    "data category": "Firmographic",
+    "Record count": 7800,
+    "fields": ["Industry", "Company size", "Revenue"]
+  },
+  {
+    "id": 3,
+    "product name": "TechStack",
+    "data category": "Technographic",
+    "Record count": 9200,
+    "fields": ["Technology stack", "Software usage", "Hardware"]
+  },
+  {
+    "id": 4,
+    "product name": "LifestylePreferences",
+    "data category": "Psychographic",
+    "Record count": 6700,
+    "fields": ["Interests", "Personality traits", "Values"]
+  },
+  {
+    "id": 5,
+    "product name": "PurchasePatterns",
+    "data category": "Behavioral",
+    "Record count": 10900,
+    "fields": ["Purchase history", "Website interactions", "Email engagement"]
+  },
+  {
+    "id": 6,
+    "product name": "SocialMediaAnalyzer",
+    "data category": "Social",
+    "Record count": 8300,
+    "fields": ["Social media profiles", "Posts", "Likes", "Shares"]
+  },
+  {
+    "id": 7,
+    "product name": "HealthProfile",
+    "data category": "Medical",
+    "Record count": 5700,
+    "fields": ["Medical conditions", "Medications", "Insurance provider"]
+  },
+  {
+    "id": 8,
+    "product name": "FinancialSnapshot",
+    "data category": "Financial",
+    "Record count": 7200,
+    "fields": ["Income", "Credit score", "Investment portfolio"]
+  },
+  {
+    "id": 9,
+    "product name": "CareerTracker",
+    "data category": "Professional",
+    "Record count": 9600,
+    "fields": ["Job title", "Skills", "Work experience"]
+  },
+  {
+    "id": 10,
+    "product name": "EducationInsights",
+    "data category": "Educational",
+    "Record count": 6800,
+    "fields": ["Degree", "Majors", "Alma mater"]
+  },
+  {
+    "id": 11,
+    "product name": "GeographicAnalytics",
+    "data category": "Geographic",
+    "Record count": 11200,
+    "fields": ["Address", "Latitude", "Longitude", "Zip code"]
+  },
+  {
+    "id": 12,
+    "product name": "PoliticalAffiliation",
+    "data category": "Political",
+    "Record count": 7900,
+    "fields": ["Party affiliation", "Voting history", "Donations"]
+  },
+  {
+    "id": 13,
+    "product name": "ReligiousBeliefs",
+    "data category": "Religious",
+    "Record count": 5400,
+    "fields": ["Religion", "Denomination", "Religious practices"]
+  },
+  {
+    "id": 14,
+    "product name": "EntertainmentPreferences",
+    "data category": "Entertainment",
+    "Record count": 8700,
+    "fields": ["Favorite movies", "Music genres", "TV shows"]
+  },
+  {
+    "id": 15,
+    "product name": "TravelPatterns",
+    "data category": "Travel",
+    "Record count": 6500,
+    "fields": ["Destinations", "Frequency", "Preferred airlines"]
+  },
+  {
+    "id": 16,
+    "product name": "DiningHabits",
+    "data category": "Food & Beverage",
+    "Record count": 9400,
+    "fields": ["Cuisine preferences", "Dining frequency", "Favorite restaurants"]
+  },
+  {
+    "id": 17,
+    "product name": "AutomobileOwnership",
+    "data category": "Automotive",
+    "Record count": 7500,
+    "fields": ["Vehicle make", "Model", "Year", "Ownership type"]
+  },
+  {
+    "id": 18,
+    "product name": "SportsParticipation",
+    "data category": "Sports",
+    "Record count": 6100,
+    "fields": ["Sports played", "Skill level", "Favorite teams"]
+  },
+  {
+    "id": 19,
+    "product name": "GamingDemographics",
+    "data category": "Gaming",
+    "Record count": 8200,
+    "fields": ["Gaming platforms", "Favorite genres", "Hours played per week"]
+  },
+  {
+    "id": 20,
+    "product name": "CharitableGiving",
+    "data category": "Philanthropic",
+    "Record count": 5600,
+    "fields": ["Donation history", "Preferred charities", "Volunteer work"]
+  }
+]
