@@ -4,7 +4,8 @@ export async function createUser(
     userCredentials: Partial<User>,
 ) {
     try {
-        const url = 'http://localhost:8080/api/auth/signup';
+        // const url = 'http://localhost:8080/api/auth/signup';
+        const url = 'https://data-catalog-web-app-5161a8376316.herokuapp.com/api/auth/signup';
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -30,7 +31,8 @@ export async function authenticateUser(
     userCredentials: Partial<User>
 ) {
     try {
-        const url = 'http://localhost:8080/api/auth/login';
+        // const url = 'http://localhost:8080/api/auth/login';
+        const url = 'https://data-catalog-web-app-5161a8376316.herokuapp.com/api/auth/login';
         const response = await fetch(url, {
             method: 'POST',
             headers: {
