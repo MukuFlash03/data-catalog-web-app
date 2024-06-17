@@ -1,3 +1,5 @@
+// This file contains a form component for creating products.
+
 'use client';
 
 import Link from 'next/link';
@@ -8,9 +10,9 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
-import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
-import { validateProductForm, validateProductForm2 } from '@/app/lib/validation/products';
+import { useEffect } from 'react';
+import { useFormState } from 'react-dom';
+import { validateProductForm } from '@/app/lib/validation/products';
 import { State } from '@/app/lib/validation/products';
 
 export default function Form() {
@@ -19,8 +21,10 @@ export default function Form() {
     message: '',
   };
 
+  // Handles form submission and calls function to validate data before insertion
   const [state, dispatch] = useFormState(validateProductForm, initialState);
 
+  // Redirect to products home page on successful product creation
   useEffect(() => {
     if (state.redirectUrl) {
       window.location.href = state.redirectUrl;

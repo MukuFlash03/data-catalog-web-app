@@ -1,3 +1,5 @@
+// This file contains validation logic for product forms using Zod schema.
+
 'use server';
 
 import { z } from "zod";
@@ -43,11 +45,13 @@ export type State = {
     redirectUrl?: string,
 };
 
+// Validation function for Product create form before creating product
 export async function validateProductForm(
     prevState: State,
     formData: FormData,
 ): Promise<State> {
     try {
+        // Extract and parse form data for product creation
         const fieldsValue = formData.get("fields") as string | null;
         const fieldsArray = fieldsValue ? fieldsValue.split(",").map((field: string) => field.trim()) : [];
 
@@ -76,7 +80,6 @@ export async function validateProductForm(
             record_count: record_count,
             fields: fields,
         };
-
         const response = await createProduct(parsedProductData);
         if (response && response.ok) {
             return {
@@ -99,12 +102,14 @@ export async function validateProductForm(
     }
 }
 
+// Validation function for Product edit form before updating product
 export async function validateProductForm2(
     _id: string,
     prevState: State,
     formData: FormData,
 ): Promise<State> {
     try {
+        // Parse and validate the product data
         const fieldsValue = formData.get("fields") as string | null;
         const fieldsArray = fieldsValue ? fieldsValue.split(",").map((field: string) => field.trim()) : [];
 
@@ -133,7 +138,6 @@ export async function validateProductForm2(
             record_count: record_count,
             fields: fields,
         };
-
         const response = await updateProduct(parsedProductData, _id);
         if (response && response.ok) {
             return {

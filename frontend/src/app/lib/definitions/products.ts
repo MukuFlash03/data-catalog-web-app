@@ -1,3 +1,4 @@
+// Define data types for the Product object
 import { UUID } from "crypto";
 
 export type Product = {

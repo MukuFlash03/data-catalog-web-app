@@ -1,3 +1,7 @@
+/**
+ * This file defines a page component for editing a product based on the _id parameter.
+ */
+
 import Form from "@/app/ui/products/edit-form";
 import { notFound } from "next/navigation";
 import { getProductById } from "@/app/lib/actions/products";

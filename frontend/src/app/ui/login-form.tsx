@@ -1,3 +1,5 @@
+// This file contains the LoginForm component for user authentication.
+
 'use client';
 
 import {
@@ -15,16 +17,16 @@ import { User } from "@/app/lib/definitions/users";
 import { validateUserForm } from '../lib/validation/users';
 import { State } from '../lib/validation/users';
 
-
-
 export default function LoginForm() {
   const initialState: State = {
     errors: {},
     message: '',
   };
 
+  // Initialize form state and dispatch function to validation function to handle user authentication
   const [state, dispatch] = useFormState(validateUserForm, initialState);
 
+  // Redirect to the specified URL when state.redirectUrl changes
   useEffect(() => {
     if (state.redirectUrl) {
       window.location.href = state.redirectUrl;

@@ -1,3 +1,7 @@
+/*
+This file contains React components for various buttons related to products, such as Logout, ViewProducts, CreateProduct, and UpdateProduct.
+*/
+
 'use client';
 
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';

@@ -1,3 +1,5 @@
+// - This file contains a React component for displaying a 404 Not Found page when a requested product is not found.
+
 import Link from "next/link";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 

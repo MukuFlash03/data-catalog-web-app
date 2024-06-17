@@ -1,3 +1,7 @@
+/* 
+This file contains the Page component for creating a new product.
+*/
+
 import Form from "@/app/ui/products/create-form";
 
 export default async function Page() {

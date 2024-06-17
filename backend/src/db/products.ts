@@ -1,7 +1,10 @@
-import { UUID } from "crypto";
+// This file contains functions to fetch products data from the database.
+
+// Import necessary libraries
 import pool from "./db_setup";
 import { Product } from "../models/products";
 
+// Function to fetch all products from the database
 export async function fetchProducts() {
     console.log('Fetching products data...');
     try {
@@ -17,6 +20,7 @@ export async function fetchProducts() {
     }
 }
 
+// Function to fetch filtered products based on a query
 export async function fetchFilteredProducts(
     query: string,
 ) {
@@ -42,6 +46,7 @@ export async function fetchFilteredProducts(
     }
 }
 
+// Function to fetch a product by its ID
 export async function fetchProductById(
     _id: string,
 ) {
@@ -61,6 +66,7 @@ export async function fetchProductById(
     }
 }
 
+// Function to insert a new product into the database
 export async function insertProduct(
     productFields: Partial<Product>
 ) {
@@ -81,6 +87,7 @@ export async function insertProduct(
     }
 }
 
+// Function to update an existing product in the database
 export async function modifyProduct(
     productFields: Partial<Product>,
     _id: string,
@@ -102,6 +109,7 @@ export async function modifyProduct(
     }
 }
 
+// Function to delete a product from the database
 export async function removeProduct(
     _id: string
 ) {

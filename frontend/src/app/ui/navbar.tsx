@@ -1,3 +1,5 @@
+// Navbar component with two links: Products homepage and Logout page
+
 'use client'
 
 import Link from "next/link";

@@ -1,5 +1,6 @@
+// This file defines a React component for displaying a page of products with search functionality.
+
 import ProductsTable from "@/app/ui/products/table";
-import { Suspense } from "react";
 import Search from "@/app/ui/search";
 import { CreateProduct } from "@/app/ui/products/buttons";
 
@@ -22,9 +23,7 @@ export default function Page({
         <Search placeholder="Search invoices..." />
         <CreateProduct />
       </div>
-      {/* <Suspense key={query} fallback={<InvoicesTableSkeleton />}> */}
       <ProductsTable query={query} />
-      {/* </Suspense> */}
     </div>
   );
 }

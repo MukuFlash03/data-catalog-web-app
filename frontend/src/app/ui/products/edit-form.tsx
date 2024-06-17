@@ -1,3 +1,5 @@
+// This file contains a React component for editing product information.
+
 'use client';
 
 import {
@@ -24,10 +26,13 @@ export default function Form({
     message: '',
   };
 
+  // Binding product id to validateProductForm2
   const validateProductForm2WithId = validateProductForm2.bind(null, product._id);
 
+  // Handles form submission and calls function to validate data before insertion
   const [state, dispatch] = useFormState(validateProductForm2WithId, initialState);
 
+  // Redirect to products home page on successful product update
   useEffect(() => {
     if (state.redirectUrl) {
       window.location.href = state.redirectUrl;

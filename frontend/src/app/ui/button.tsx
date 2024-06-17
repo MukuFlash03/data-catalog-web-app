@@ -1,3 +1,5 @@
+// This function generates a button component with customizable styles and children.
+
 import clsx from 'clsx';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

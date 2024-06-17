@@ -1,3 +1,5 @@
+// This file contains a React component for displaying a table of products.
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -12,13 +14,10 @@ export default function ProductsTable({
   query: string;
 }) {
   noStore();
-
-  // // console.log("Table:", query);
-  // const products = await handleProductSearch(query);
-  // // console.log(products);
-
+  // Initialize state for products
   const [products, setProducts] = useState<Product[] | null>(null);
 
+  // Fetch products based on query
   useEffect(() => {
     const fetchProducts = async () => {
       const fetchedProducts = await handleProductSearch(query);
