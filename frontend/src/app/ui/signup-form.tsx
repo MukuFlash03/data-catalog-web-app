@@ -1,3 +1,5 @@
+// This file contains the SignupForm component for user registration with form validation and success message display.
+
 'use client';
 
 import {
@@ -18,10 +20,11 @@ export default function SignupForm() {
     errors: {},
     message: '',
   };
-
+  // Initialize form state and dispatch function to validation function to handle user registration
   const [state, dispatch] = useFormState(validateUserForm2, initialState);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+  // Set up a timer to show success message and redirect to the specified URL after 3 seconds
   useEffect(() => {
     let timer: NodeJS.Timeout;
 

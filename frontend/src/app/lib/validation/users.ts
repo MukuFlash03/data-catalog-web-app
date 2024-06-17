@@ -1,4 +1,4 @@
-// 'use server';
+// This file contains validation logic for user forms using Zod schema.
 
 import { z } from "zod";
 import { User } from "@/app/lib/definitions/users";
@@ -24,6 +24,7 @@ export type State = {
     redirectUrl?: string,
 };
 
+// Validation function for User login form before authenticating user
 export async function validateUserForm(
     prevState: State,
     formData: FormData
@@ -71,6 +72,7 @@ export async function validateUserForm(
     }
 }
 
+// Validation function for User signup form before creating user
 export async function validateUserForm2(
     prevState: State,
     formData: FormData

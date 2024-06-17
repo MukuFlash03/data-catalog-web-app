@@ -1,8 +1,15 @@
+/*
+This file sets up a PostgreSQL connection pool using environment variables loaded from a .env file.
+*/
+
+// Import necessary libraries
 import { Pool } from 'pg';
 import dotenv from "dotenv";
 
+// Load environment variables from .env file
 dotenv.config();
 
+// Create a new Pool instance for PostgreSQL connection
 const pool = new Pool({
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
@@ -14,4 +21,5 @@ const pool = new Pool({
     }
 })
 
+// Export the pool for use in other modules
 export default pool;

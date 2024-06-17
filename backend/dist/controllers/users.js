@@ -1,4 +1,7 @@
 "use strict";
+/*
+File contains user-related controllers including user creation and authentication.
+*/
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -16,6 +19,7 @@ exports.authenticateUser = exports.createUser = void 0;
 const express_1 = require("express");
 const users_1 = require("../db/users");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+// Create a new router instance
 const router = (0, express_1.Router)();
 exports.createUser = router.post("/signup", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const userFields = {
@@ -31,7 +35,9 @@ exports.createUser = router.post("/signup", (request, response) => __awaiter(voi
                 .json({ message: 'User with the same email already exists.' });
         }
         else {
+            // Generate a salt for password hashing
             const salt = yield bcryptjs_1.default.genSalt(10);
+            // Hash the user's password using the generated salt
             const hashedPassword = yield bcryptjs_1.default.hash(userFields.password, salt);
             // If user doesn't exist, insert the new user
             const user = yield (0, users_1.insertUser)({ email: userFields.email, password: hashedPassword });

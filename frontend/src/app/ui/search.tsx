@@ -1,3 +1,5 @@
+// This file contains the Search component for handling search functionality in the UI.
+
 'use client';
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
@@ -9,6 +11,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
+    // Function to handle search with debouncing to avoid multiple keystroke based requests to backend 
     const handleSearch = useDebouncedCallback((term: string) => {
         console.log(`Searching... ${term}`);
         const params = new URLSearchParams(searchParams);

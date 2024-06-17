@@ -1,3 +1,7 @@
+/*
+File contains user-related controllers including user creation and authentication.
+*/
+
 import pool from "../db/db_setup";
 import { Request, Response, Router } from 'express';
 import { User } from "../models/users";
@@ -9,6 +13,7 @@ import {
 } from "../db/users";
 import bcrypt from 'bcryptjs';
 
+// Create a new router instance
 const router = Router();
 
 export const createUser = router.post("/signup", async (request: Request, response: Response) => {
@@ -24,7 +29,10 @@ export const createUser = router.post("/signup", async (request: Request, respon
                 .status(400)
                 .json({ message: 'User with the same email already exists.' });
         } else {
+
+            // Generate a salt for password hashing
             const salt = await bcrypt.genSalt(10);
+            // Hash the user's password using the generated salt
             const hashedPassword = await bcrypt.hash(userFields.password, salt);
             // If user doesn't exist, insert the new user
             const user = await insertUser({ email: userFields.email, password: hashedPassword });
@@ -54,7 +62,6 @@ export const authenticateUser = router.post("/login", async (request: Request, r
                 .json({ message: "User does not exist. Please sign up first." });
         } else {
             const isPasswordMatch = await bcrypt.compare(userFields.password, user.password);
-
             if (isPasswordMatch) {
                 response
                     .status(200)
@@ -75,5 +82,3 @@ export const authenticateUser = router.post("/login", async (request: Request, r
             .json({ message: `Internal Server Error: ${error}` });
     }
 });
-
-

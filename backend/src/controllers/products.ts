@@ -1,3 +1,8 @@
+/*
+Routes for managing products including getting all products, getting a product by ID, creating a new product, updating a product, and deleting a product.
+*/
+
+// Import necessary libraries and modules
 import pool from "../db/db_setup";
 import { Request, Response, Router } from 'express';
 import { Product } from "../models/products";
@@ -10,6 +15,7 @@ import {
     removeProduct,
 } from "../db/products";
 
+// Define a new router instance
 const router = Router();
 
 // Get all Products
@@ -36,7 +42,6 @@ export const getProducts = router.get("/", async (request: Request, response: Re
             .json({ message: `Internal Server Error: ${error}` });
     }
 });
-
 
 // Get Product by ID
 export const getProductById = router.get("/:_id", async (request: Request, response: Response) => {

@@ -1,4 +1,7 @@
 "use strict";
+/*
+Routes for managing products including getting all products, getting a product by ID, creating a new product, updating a product, and deleting a product.
+*/
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -23,12 +26,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// Import neceessary libraries
 const express_1 = require("express");
 const ProductsController = __importStar(require("../controllers/products"));
+// Create a new router instance
 const router = (0, express_1.Router)();
+// Get all products
 router.get("/", ProductsController.getProducts);
+// Get product by ID
 router.get("/:_id", ProductsController.getProductById);
+// Create a new product
 router.post("/", ProductsController.createProduct);
+// Update a product
 router.put("/:_id", ProductsController.updateProduct);
+// Delete a product
 router.delete("/:_id", ProductsController.deleteProduct);
+// Export the router for use in other modules
 exports.default = router;

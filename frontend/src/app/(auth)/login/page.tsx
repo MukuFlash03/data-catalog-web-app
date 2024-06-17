@@ -1,3 +1,5 @@
+// This file contains the login page component for the authentication module.
+
 import Logo from "../../ui/logo";
 import LoginForm from "@/app/ui/login-form";
 

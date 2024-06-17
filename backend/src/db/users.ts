@@ -1,7 +1,12 @@
-import { UUID } from "crypto";
+/*
+File contains database functions related to users including fetching users, finding users by credentials, and checking user existence.
+*/
+
+// Import necessary libraries
 import pool from "./db_setup";
 import { User } from "../models/users";
 
+// Function to fetch all users from the database
 export async function fetchUsers() {
     console.log('Fetching users data...');
     try {
@@ -17,6 +22,7 @@ export async function fetchUsers() {
     }
 }
 
+// Function to find a user by their credentials
 export async function findUserByCredentials({
     email,
 }: {
@@ -38,6 +44,7 @@ export async function findUserByCredentials({
     }
 }
 
+// Function to check if a user already exists
 export async function isUserExists(
     email: string,
 ) {
@@ -56,6 +63,7 @@ export async function isUserExists(
     }
 }
 
+// Function to insert a new user into the database
 export async function insertUser(
     userFields: Partial<User>
 ) {

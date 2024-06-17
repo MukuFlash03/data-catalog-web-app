@@ -1,9 +1,12 @@
+// This file contains functions for handling and sending backend request to the server for Product operations.
+
 import { Product } from '@/app/lib/definitions/products';
 
 export async function handleProductSearch(
     query: string,
 ) {
     try {
+        // Construct the URL based on the query parameter
         // const url = query ? `http://localhost:8080/api/products?query=${query}` : 'http://localhost:8080/api/products';
         const url = query ?
             `https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products?query=${query}`
@@ -24,12 +27,6 @@ export async function handleProductSearch(
         console.error('Error fetching products:', error);
         return [];
     }
-}
-
-export async function testProduct() {
-    return {
-        name: "test",
-    };
 }
 
 export async function getProductById(

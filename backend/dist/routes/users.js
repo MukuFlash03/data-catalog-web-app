@@ -1,4 +1,7 @@
 "use strict";
+/*
+Routes for user authentication and creation
+*/
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -23,9 +26,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// Import necessary libraries
 const express_1 = require("express");
 const UsersController = __importStar(require("../controllers/users"));
+// Create a new router instance
 const router = (0, express_1.Router)();
+// Route to create a new user
 router.post("/signup", UsersController.createUser);
+// Route to authenticate a user
 router.post("/login", UsersController.authenticateUser);
 exports.default = router;

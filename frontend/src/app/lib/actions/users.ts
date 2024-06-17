@@ -1,3 +1,5 @@
+// This file contains functions for handling and sending backend request to the server for User operations
+
 import { User } from '@/app/lib/definitions/users';
 
 export async function createUser(

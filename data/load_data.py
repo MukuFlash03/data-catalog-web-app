@@ -1,8 +1,9 @@
-import json
+# Import necessary libraries
+import json 
 import psycopg2
-import os
-from urllib.parse import urlparse
-from dotenv import load_dotenv
+import os 
+from urllib.parse import urlparse 
+from dotenv import load_dotenv 
 
 # Load environment variables from .env file
 load_dotenv()
@@ -20,14 +21,14 @@ if DATABASE_URL is None:
 # Parse the URL into components
 result = urlparse(DATABASE_URL)
 
-# Extract the components
+# Extract the components from the URL
 username = result.username
 password = result.password
 database = result.path[1:]
 hostname = result.hostname
 port = result.port
 
-# Connect to Heroku PostgreSQL
+# Connect to Heroku PostgreSQL DB instance
 conn = psycopg2.connect(
     dbname=database,
     user=username,
@@ -37,7 +38,7 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
-# Insert data into the table
+# Insert product data into the table
 for entry in data_entries:
     cur.execute(
         """

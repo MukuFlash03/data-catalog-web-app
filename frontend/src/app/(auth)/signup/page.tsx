@@ -1,3 +1,5 @@
+// - This file contains the Page component for the signup page, which includes a logo and a signup form.
+
 import Logo from "../../ui/logo";
 import SignupForm from "../../ui/signup-form";
 

@@ -1,3 +1,7 @@
+/*
+This file contains a logout page component with a logout button that redirects the user to the homepage upon clicking.
+*/
+
 'use client';
 
 import Logo from "../../ui/logo";
@@ -25,10 +29,13 @@ export default function Page() {
 function LogoutButton() {
     const router = useRouter();
 
+    // Function to handle the logout action
     function handleLogout() {
+        // Redirect to home page on logout
         router.push('/');
     }
 
+    // Render the logout button
     return (
         <Button className="mt-4 w-full" onClick={handleLogout}>
             Log Out <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />

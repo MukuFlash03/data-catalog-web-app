@@ -1,3 +1,5 @@
+// Logo component that inserts image
+
 import Image from "next/image";
 
 export default function Logo() {
