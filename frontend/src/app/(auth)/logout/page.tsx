@@ -26,7 +26,6 @@ function LogoutButton() {
     const router = useRouter();
 
     function handleLogout() {
-        localStorage.removeItem('token');
         router.push('/');
     }
 

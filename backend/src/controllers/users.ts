@@ -8,7 +8,6 @@ import {
     insertUser,
 } from "../db/users";
 import bcrypt from 'bcryptjs';
-import { generateAccessToken } from "../util/auth";
 
 const router = Router();
 
@@ -55,8 +54,6 @@ export const authenticateUser = router.post("/login", async (request: Request, r
                 .json({ message: "User does not exist. Please sign up first." });
         } else {
             const isPasswordMatch = await bcrypt.compare(userFields.password, user.password);
-            const token = generateAccessToken(userFields.email);
-            console.log("Token from generateAccessToken: ", token);
 
             if (isPasswordMatch) {
                 response
@@ -64,7 +61,6 @@ export const authenticateUser = router.post("/login", async (request: Request, r
                     .json({
                         message: "User logged in successfully.",
                         email: user.email,
-                        token: token,
                     });
             } else {
                 response

@@ -11,8 +11,8 @@ export default async function Page({ params }: { params: { _id: string } }) {
     }
 
     return (
-        <main>
-            <h1>Edit Product</h1>
+        <main className="pt-20">
+            {/* <h1>Edit Product</h1> */}
             <Form product={product[0]} />
         </main>
     )

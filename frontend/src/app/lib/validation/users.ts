@@ -51,17 +51,6 @@ export async function validateUserForm(
 
         const { response, responseData } = await authenticateUser(parsedCredentials);
         if (response && response.ok) {
-            // localStorage.setItem('token', responseData.token);
-            console.log("Log token: ", responseData.token);
-            console.error("Error token: ", responseData.token)
-
-            if (typeof window !== 'undefined') {
-                localStorage.setItem('token', responseData.token);
-                console.log("Setting local storage");
-            }
-            else {
-                console.log("Not setting local storage");
-            }
             return {
                 message: 'User authenticated successfully',
                 redirectUrl: '/products',
