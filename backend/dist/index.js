@@ -11,13 +11,15 @@ const users_1 = __importDefault(require("./routes/users"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
-const corsOptions = {
-    origin: 'http://localhost:3000', // Allow only this origin to access the API
-    optionsSuccessStatus: 200, // Some legacy browsers choke on 204
-};
+// const corsOptions = {
+//     // origin: 'http://localhost:3000',
+//     origin: 'https://data-catalog-web-1wctfyc01-mukuflash03s-projects.vercel.app',
+//     optionsSuccessStatus: 200, // Some legacy browsers choke on 204
+// };
+// app.use(cors(corsOptions));
+app.use((0, cors_1.default)());
 // Middleware to parse JSON requests
 app.use(express_1.default.json());
-app.use((0, cors_1.default)(corsOptions));
 app.use("/api/auth", users_1.default);
 app.use("/api/products", products_1.default);
 app.get("/", (req, res) => {
