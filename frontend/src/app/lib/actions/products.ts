@@ -4,7 +4,10 @@ export async function handleProductSearch(
     query: string,
 ) {
     try {
-        const url = query ? `http://localhost:8080/api/products?query=${query}` : 'http://localhost:8080/api/products';
+        // const url = query ? `http://localhost:8080/api/products?query=${query}` : 'http://localhost:8080/api/products';
+        const url = query ?
+            `https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products?query=${query}`
+            : 'https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products';
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -33,7 +36,8 @@ export async function getProductById(
     name: string,
 ) {
     try {
-        const url = `http://localhost:8080/api/products/${name}`;
+        // const url = `http://localhost:8080/api/products/${name}`;
+        const url = `https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products/${name}`;
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -55,7 +59,8 @@ export async function createProduct(
     productData: Partial<Product>,
 ) {
     try {
-        const url = 'http://localhost:8080/api/products';
+        // const url = 'http://localhost:8080/api/products';
+        const url = 'https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products';
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -82,7 +87,8 @@ export async function updateProduct(
     _id: string,
 ) {
     try {
-        const url = `http://localhost:8080/api/products/${_id}`;
+        // const url = `http://localhost:8080/api/products/${_id}`;
+        const url = `https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products/${_id}`;
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
@@ -106,7 +112,8 @@ export async function updateProduct(
 
 export async function removeProduct(_id: string) {
     try {
-        const url = `http://localhost:8080/api/products/${_id}`;
+        // const url = `http://localhost:8080/api/products/${_id}`;
+        const url = `https://data-catalog-web-app-5161a8376316.herokuapp.com/api/products/${_id}`;
         const response = await fetch(url, {
             method: 'DELETE',
             headers: {
