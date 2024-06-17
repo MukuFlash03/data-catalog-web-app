@@ -8,21 +8,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProduct = exports.updateProduct = exports.createProduct = exports.getProductById = exports.getProducts = void 0;
-const db_setup_1 = __importDefault(require("../db_setup"));
 const express_1 = require("express");
+const products_1 = require("../db/products");
 const router = (0, express_1.Router)();
 // Get all Products
-exports.getProducts = router.get("/products", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getProducts = router.get("/", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
-        const results = yield db_setup_1.default.query('SELECT * FROM data_entries');
-        response
-            .status(200)
-            .json(results.rows);
+        if (request.query.query === undefined || typeof request.query.query === 'string') {
+            const searchQuery = (_a = request.query.query) !== null && _a !== void 0 ? _a : '';
+            let products;
+            if (searchQuery) {
+                // If a search query is provided, fetch filtered products
+                products = yield (0, products_1.fetchFilteredProducts)(searchQuery);
+            }
+            else {
+                // If no search query is provided, fetch all products
+                products = yield (0, products_1.fetchProducts)();
+            }
+            response
+                .status(200)
+                .json(products);
+        }
     }
     catch (error) {
         console.error("Error getting products:", error);
@@ -32,17 +41,13 @@ exports.getProducts = router.get("/products", (request, response) => __awaiter(v
     }
 }));
 // Get Product by ID
-exports.getProductById = router.get("/products/:_id", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getProductById = router.get("/:_id", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = request.params._id;
     try {
-        const results = yield db_setup_1.default.query(`
-            SELECT * 
-            FROM data_entries 
-            WHERE _id = $1
-            `, [_id]);
+        const products = yield (0, products_1.fetchProductById)(_id);
         response
             .status(200)
-            .json(results.rows);
+            .json(products);
     }
     catch (error) {
         console.error("Error getting product:", error);
@@ -52,61 +57,61 @@ exports.getProductById = router.get("/products/:_id", (request, response) => __a
     }
 }));
 // Create a Product
-exports.createProduct = router.post("/products", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id, product_name, data_category, record_count, fields } = request.body;
+exports.createProduct = router.post("/", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const productFields = {
+        id: request.body.id,
+        product_name: request.body.product_name,
+        data_category: request.body.data_category,
+        record_count: request.body.record_count,
+        fields: request.body.fields,
+    };
     try {
-        const results = yield db_setup_1.default.query(`
-            INSERT INTO data_entries (id, product_name, data_category, record_count, fields) 
-            VALUES ($1, $2, $3, $4, $5)
-            RETURNING *
-            `, [id, product_name, data_category, record_count, fields]);
+        const product = yield (0, products_1.insertProduct)(productFields);
         response
             .status(201)
-            .send(`User added with ID: ${results.rows[0]._id}`);
+            .json({ message: "Product added successfully", product });
     }
     catch (error) {
-        console.error("Error getting product:", error);
+        console.error("Error creating product:", error);
         response
             .status(500)
             .json({ message: `Internal Server Error: ${error}` });
     }
 }));
 // Update a Product
-exports.updateProduct = router.put("/products/:_id", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id, product_name, data_category, record_count, fields } = request.body;
-    const parsedRecordCount = parseInt(record_count);
+exports.updateProduct = router.put("/:_id", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const productFields = {
+        id: request.body.id,
+        product_name: request.body.product_name,
+        data_category: request.body.data_category,
+        record_count: request.body.record_count,
+        fields: request.body.fields,
+    };
     const _id = request.params._id;
     try {
-        const results = yield db_setup_1.default.query(`
-            UPDATE data_entries 
-            SET id = $1, product_name = $2, data_category = $3, record_count = $4, fields = $5 
-            WHERE _id = $6
-            `, [id, product_name, data_category, record_count, fields, _id]);
+        const product = yield (0, products_1.modifyProduct)(productFields, _id);
         response
             .status(201)
-            .send(`User modified with ID: ${_id}`);
+            .json({ message: "Product updated successfully", product });
     }
     catch (error) {
-        console.error("Error getting product:", error);
+        console.error("Error updating product:", error);
         response
             .status(500)
             .json({ message: `Internal Server Error: ${error}` });
     }
 }));
 // Delete a Product
-exports.deleteProduct = router.delete("/products/:_id", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+exports.deleteProduct = router.delete("/:_id", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = request.params._id;
     try {
-        const results = yield db_setup_1.default.query(`
-            DELETE FROM data_entries 
-            WHERE _id = $1
-            `, [_id]);
+        const product = yield (0, products_1.removeProduct)(_id);
         response
             .status(201)
-            .send(`User deleted with ID: ${_id}`);
+            .json({ message: "Product deleted successfully", product });
     }
     catch (error) {
-        console.error("Error getting product:", error);
+        console.error("Error deleting product:", error);
         response
             .status(500)
             .json({ message: `Internal Server Error: ${error}` });
