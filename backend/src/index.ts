@@ -10,7 +10,8 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Allow only this origin to access the API
+    // origin: 'http://localhost:3000',
+    origin: 'https://data-catalog-web-1wctfyc01-mukuflash03s-projects.vercel.app',
     optionsSuccessStatus: 200, // Some legacy browsers choke on 204
 };
 
