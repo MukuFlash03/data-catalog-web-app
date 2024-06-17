@@ -24,11 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const ProductsController = __importStar(require("../controllers/products"));
+const UsersController = __importStar(require("../controllers/users"));
 const router = (0, express_1.Router)();
-router.get("/", ProductsController.getProducts);
-router.get("/:_id", ProductsController.getProductById);
-router.post("/", ProductsController.createProduct);
-router.put("/:_id", ProductsController.updateProduct);
-router.delete("/:_id", ProductsController.deleteProduct);
+router.post("/signup", UsersController.createUser);
+router.post("/login", UsersController.authenticateUser);
 exports.default = router;
